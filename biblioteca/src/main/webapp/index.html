@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="es">
+
+    <head>
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <title>Biblioteca UCompensar</title>
+
+        <!-- Custom fonts for this template -->
+        <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+        <link
+            href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+            rel="stylesheet">
+
+        <!-- Custom styles for this template -->
+        <link href="css/sb-admin-2.min.css" rel="stylesheet">
+
+        <!-- Custom styles for this page -->
+        <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+
+        <!-- Bootstrap JS (incluyendo jQuery) -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+
+    </head>
+
+    <body id="page-top">
+
+        <!-- Page Wrapper -->
+        <div id="wrapper">
+
+            <!-- Sidebar -->
+            <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+                <!-- Sidebar - Brand -->
+                <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+                    <div class="sidebar-brand-icon rotate-n-15">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <div class="sidebar-brand-text mx-3">Biblioteca UCompensar</div>
+                </a>
+
+                <!-- Divider -->
+                <hr class="sidebar-divider my-0">
+
+                <!-- Nav Item - Inicio -->
+                <li class="nav-item active">
+                    <a class="nav-link" href="index.html">
+                        <i class="fas fa-fw fa-table"></i>
+                        <span>Inicio</span></a>
+                </li>
+
+                <!-- Divider -->
+                <hr class="sidebar-divider">
+
+                <!-- Heading -->
+                <div class="sidebar-heading">
+                    Interface
+                </div>
+
+                <!-- Nav Item - Charts -->
+                <li class="nav-item">
+                    <a class="nav-link" href="perfil.html">
+                        <i class="fas fa-fw fa-user"></i>
+                        <span>Perfil</span></a>
+                </li>
+
+                <!-- Nav Item - Tables -->
+                <li class="nav-item">
+                    <a class="nav-link" href="librosSolicitados.html">
+                        <i class="fas fa-fw fa-table"></i>
+                        <span>Libros solicitados</span></a>
+                </li>
+
+                <!-- Divider -->
+                <hr class="sidebar-divider d-none d-md-block">
+
+                <!-- Sidebar Toggler (Sidebar) -->
+                <div class="text-center d-none d-md-inline">
+                    <button class="rounded-circle border-0" id="sidebarToggle"></button>
+                </div>
+
+            </ul>
+            <!-- End of Sidebar -->
+
+            <!-- Content Wrapper -->
+            <div id="content-wrapper" class="d-flex flex-column">
+
+                <!-- Main Content -->
+                <div id="content">
+
+                    <!-- Topbar -->
+                    <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+                        <!-- Sidebar Toggle (Topbar) -->
+                        <form class="form-inline">
+                            <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                                <i class="fa fa-bars"></i>
+                            </button>
+                        </form>
+
+                        <!-- Topbar Search -->
+                        <form
+                            class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                            <div class="input-group">
+                                <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
+                                    aria-label="Search" aria-describedby="basic-addon2">
+                                <div class="input-group-append">
+                                    <button class="btn btn-primary" type="button">
+                                        <i class="fas fa-search fa-sm"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+
+                        <!-- Topbar Navbar -->
+                        <ul class="navbar-nav ml-auto">
+
+                            <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+                            <li class="nav-item dropdown no-arrow d-sm-none">
+                                <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fas fa-search fa-fw"></i>
+                                </a>
+                                <!-- Dropdown - Messages -->
+                                <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
+                                    aria-labelledby="searchDropdown">
+                                    <form class="form-inline mr-auto w-100 navbar-search">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control bg-light border-0 small"
+                                                placeholder="Search for..." aria-label="Search"
+                                                aria-describedby="basic-addon2">
+                                            <div class="input-group-append">
+                                                <button class="btn btn-primary" type="button">
+                                                    <i class="fas fa-search fa-sm"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </li>
+
+                            <!-- Nav Item - User Information -->
+                            <li class="nav-item dropdown no-arrow">
+                                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <span class="mr-2 d-none d-lg-inline text-gray-600 small" id="user-name"></span>
+                                    <img class="img-profile rounded-circle"
+                                        src="img/undraw_profile.svg">
+                                    <button id="login-btn" style="display:none;">Iniciar sesión</button>
+                                </a>
+                                <script src="js/perfil.js"></script>
+                                <!-- Dropdown - User Information -->
+                                <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                    aria-labelledby="userDropdown">
+                                    <a class="dropdown-item" href="#">
+                                        <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                        Perfil
+                                    </a>                    
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="login.html" data-toggle="modal" data-target="#logoutModal">
+                                        <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                        Logout
+                                    </a>
+                                </div>
+                            </li>
+
+                        </ul>
+
+                    </nav>
+                    <!-- End of Topbar -->
+
+                    <!-- Begin Page Content -->
+                    <div class="container-fluid">
+
+                        <!-- Page Heading -->
+                        <h1 class="h3 mb-2 text-gray-800">Libros</h1>
+                        <p class="mb-4">Aquí puedes ver una lista de los libros que tenemos disponibles para que puedas hacer tu solicitud de prestamo. <br><a target="_blank"
+                                href="librosSolicitados.html">Ver libros solicitados</a>.</p>
+
+                        <!-- DataTales Example -->
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">Lista de libros</h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered" id="dataTable"  width="100%" cellspacing="0">
+                                        <thead>
+                                            <tr>
+                                                <th>Título</th>
+                                                <th>Autor</th>
+                                                <th>Año</th>
+                                                <th>Estado</th>
+                                                <th>Solicitar</th>
+                                            </tr>
+                                        </thead>
+                                        <tfoot>
+                                            <tr>
+                                                <th>Título</th>
+                                                <th>Autor</th>
+                                                <th>Año</th>
+                                                <th>Estado</th>
+                                                <th>Solicitar</th>
+                                            </tr>
+                                        </tfoot>
+                                        <tbody>
+                                            <tr>
+                                                <td class="titulo-libro" data-resumen="Cien años de soledad es la obra maestra de Gabriel García Márquez. Es una epopeya que narra la historia de la familia Buendía en el ficticio pueblo de Macondo. A través de generaciones, se entrelazan lo mágico y lo cotidiano, revelando las grandes verdades de la vida y la historia de América Latina. La novela es una reflexión profunda sobre el destino, el poder y la soledad." data-autor="Gabriel García Márquez" data-año="1967">Cien años de soledad</td>
+                                                <td>Gabriel García Márquez</td>
+                                                <td>1967</td>
+                                                <td>Disponible</td>
+                                                <td><button class="btn btn-primary solicitar" id="btn-solicitar-1">Solicitar</button></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="titulo-libro" data-resumen="Cometas en el cielo cuenta la conmovedora historia de Amir y Hassan, dos amigos en el Kabul de los años 70, y cómo sus destinos se ven marcados por la traición y la redención. La novela explora temas como la amistad, la culpa, la redención y la compleja historia de Afganistán, desde la monarquía hasta la invasión soviética." data-autor="Khaled Hosseini" data-año="2003">Cometas en el cielo</td>
+                                                <td>Khaled Hosseini</td>
+                                                <td>2003</td>
+                                                <td>No disponible</td>
+                                                <td><button class="btn btn-primary solicitar" id="btn-solicitar-2" disabled>Solicitar</button></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="titulo-libro" data-resumen="Fahrenheit 451 de Ray Bradbury es una novela distópica ambientada en un futuro donde los libros están prohibidos y el trabajo de los bomberos consiste en quemarlos. Guy Montag, un bombero, comienza a cuestionar este sistema tras conocer a una joven que le hace ver la importancia de la libertad de pensamiento. La obra es una crítica profunda a la censura, la ignorancia y el conformismo." data-autor="Ray Bradbury" data-año="1953">Fahrenheit 451</td>
+                                                <td>Ray Bradbury</td>
+                                                <td>1953</td>
+                                                <td>Disponible</td>
+                                                <td><button class="btn btn-primary solicitar" id="btn-solicitar-3">Solicitar</button></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="titulo-libro" data-resumen="El diario de Ana Frank es el relato personal de una joven judía que se esconde con su familia durante la ocupación nazi de los Países Bajos. Ana documenta los desafíos diarios de vivir en secreto y sus sentimientos de aislamiento y miedo, pero también sus sueños y deseos. Es una obra conmovedora y una de las más importantes del siglo XX que refleja el horror del Holocausto desde una perspectiva íntima." data-autor="Anne Frank" data-año="1947">El diario de Ana Frank</td>
+                                                <td>Anne Frank</td>
+                                                <td>1947</td>
+                                                <td>No disponible</td>
+                                                <td><button class="btn btn-primary solicitar" id="btn-solicitar-4" disabled>Solicitar</button></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="titulo-libro" data-resumen="Trampa-22 es una sátira sobre la locura de la guerra y la burocracia militar, ambientada durante la Segunda Guerra Mundial. La novela sigue las aventuras del capitán John Yossarian, un bombardero que lucha por mantenerse vivo mientras el ejército crea reglas absurdas para que nunca pueda abandonar la guerra. Joseph Heller critica los sinsentidos de las instituciones militares y la guerra moderna." data-autor="Joseph Heller" data-año="1961">Trampa-22</td>
+                                                <td>Joseph Heller</td>
+                                                <td>1961</td>
+                                                <td>Disponible</td>
+                                                <td><button class="btn btn-primary solicitar" id="btn-solicitar-5">Solicitar</button></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="titulo-libro" data-resumen="El extranjero de Albert Camus es una obra clave del existencialismo. La novela narra la vida de Meursault, un hombre que parece indiferente a las normas y emociones sociales. Tras la muerte de su madre, comete un asesinato aparentemente sin razón. La obra explora temas profundos sobre el absurdo de la vida, la falta de sentido inherente de la existencia y la alienación del individuo en la sociedad moderna." data-autor="Albert Camus" data-año="1942">El extranjero</td>
+                                                <td>Albert Camus</td>
+                                                <td>1942</td>
+                                                <td>Disponible</td>
+                                                <td><button class="btn btn-primary solicitar" id="btn-solicitar-6">Solicitar</button></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="titulo-libro" data-resumen="Rebelión en la granja es una alegoría política escrita por George Orwell. La historia sigue a un grupo de animales de granja que se rebelan contra sus dueños humanos con la esperanza de crear una sociedad donde todos los animales sean iguales. Sin embargo, con el tiempo, los líderes de la rebelión se corrompen, y la granja acaba bajo un régimen aún más opresivo. La novela es una crítica mordaz del comunismo soviético y la corrupción del poder." data-autor="George Orwell" data-año="1945">Rebelión en la granja</td>
+                                                <td>George Orwell</td>
+                                                <td>1945</td>
+                                                <td>No disponible</td>
+                                                <td><button class="btn btn-primary solicitar" id="btn-solicitar-7" disabled>Solicitar</button></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="titulo-libro" data-resumen="Matar a un ruiseñor es una novela ambientada en el sur profundo de los Estados Unidos durante la Gran Depresión. Narra la historia de Atticus Finch, un abogado que defiende a un hombre negro acusado de violar a una mujer blanca, desde la perspectiva de su hija Scout. La novela es una denuncia del racismo y la injusticia social, y es considerada una de las grandes obras de la literatura norteamericana." data-autor="Harper Lee" data-año="1960">Matar a un ruiseñor</td>
+                                                <td>Harper Lee</td>
+                                                <td>1960</td>
+                                                <td>Disponible</td>
+                                                <td><button class="btn btn-primary solicitar" id="btn-solicitar-8">Solicitar</button></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="titulo-libro" data-resumen="El alquimista es una novela filosófica que cuenta la historia de Santiago, un joven pastor andaluz que emprende un viaje en busca de un tesoro enterrado cerca de las pirámides de Egipto. A lo largo de su travesía, Santiago aprende valiosas lecciones sobre el destino, el amor y la búsqueda de los sueños. La obra de Paulo Coelho ha sido traducida a decenas de idiomas y ha inspirado a millones de lectores en todo el mundo." data-autor="Paulo Coelho" data-año="1988">El alquimista</td>
+                                                <td>Paulo Coelho</td>
+                                                <td>1988</td>
+                                                <td>Disponible</td>
+                                                <td><button class="btn btn-primary solicitar" id="btn-solicitar-9">Solicitar</button></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="titulo-libro" data-resumen="Moby Dick es la historia de la obsesión del capitán Ahab por cazar a la gigantesca ballena blanca que le arrebató una pierna. La narración de Ishmael, el único sobreviviente de la tripulación del Pequod, es una profunda meditación sobre la naturaleza de la obsesión, el poder destructivo del rencor y las fuerzas impredecibles de la naturaleza. Esta obra maestra de Herman Melville es considerada una de las más importantes de la literatura americana." data-autor="Herman Melville" data-año="1851">Moby Dick</td>
+                                                <td>Herman Melville</td>
+                                                <td>1851</td>
+                                                <td>No disponible</td>
+                                                <td><button class="btn btn-primary solicitar" id="btn-solicitar-10" disabled>Solicitar</button></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="titulo-libro" data-resumen="Don Quijote de la Mancha sigue las aventuras de un hidalgo español llamado Alonso Quijano, que, después de leer demasiados libros de caballería, pierde el juicio y decide convertirse en un caballero andante. Junto con su fiel escudero, Sancho Panza, recorre España en busca de aventuras, enfrentándose a molinos de viento que confunde con gigantes y experimentando otras situaciones cómicas y trágicas. La obra es una profunda reflexión sobre la realidad, la locura, el idealismo y el desengaño." data-autor="Miguel de Cervantes" data-año="1605">Don Quijote de la Mancha</td>
+                                                <td>Miguel de Cervantes</td>
+                                                <td>1605</td>
+                                                <td>Disponible</td>
+                                                <td><button class="btn btn-primary solicitar" id="btn-solicitar-11">Solicitar</button></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="titulo-libro" data-resumen="Orgullo y prejuicio cuenta la historia de Elizabeth Bennet, una joven inglesa de la pequeña nobleza rural, que debe lidiar con las presiones sociales y las expectativas familiares respecto al matrimonio. A lo largo de la novela, se enfrenta a sus propios prejuicios y los de los demás, particularmente en su relación con el orgulloso y reservado Sr. Darcy. La obra de Jane Austen es una crítica de la sociedad británica del siglo XIX y de los roles de género." data-autor="Jane Austen" data-año="1813">Orgullo y prejuicio</td>
+                                                <td>Jane Austen</td>
+                                                <td>1813</td>
+                                                <td>No disponible</td>
+                                                <td><button class="btn btn-primary solicitar" id="btn-solicitar-12" disabled>Solicitar</button></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="titulo-libro" data-resumen="El Gran Gatsby es una novela que se desarrolla en los años 20 y sigue la vida de Jay Gatsby, un millonario enigmático y sus intentos por recuperar el amor de Daisy Buchanan, una mujer casada. A través de los ojos de Nick Carraway, el narrador, la novela explora temas como la obsesión, la superficialidad de la sociedad y el Sueño Americano. La obra de Fitzgerald es considerada una de las más importantes de la literatura estadounidense." data-autor="F. Scott Fitzgerald" data-año="1925">El Gran Gatsby</td>
+                                                <td>F. Scott Fitzgerald</td>
+                                                <td>1925</td>
+                                                <td>Disponible</td>
+                                                <td><button class="btn btn-primary solicitar" id="btn-solicitar-13">Solicitar</button></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="titulo-libro" data-resumen="Crimen y castigo es una profunda exploración de la mente humana. La novela sigue a Rodión Raskólnikov, un joven estudiante en San Petersburgo que, empujado por la pobreza y sus ideas nihilistas, decide asesinar a una anciana usurera. A medida que la historia avanza, Raskólnikov se enfrenta al peso de la culpa y a las consecuencias morales de su crimen, mientras Dostoyevski explora temas de justicia, redención y la lucha interna del alma humana." data-autor="Fiódor Dostoyevski" data-año="1866">Crimen y castigo</td>
+                                                <td>Fiódor Dostoyevski</td>
+                                                <td>1866</td>
+                                                <td>No disponible</td>
+                                                <td><button class="btn btn-primary solicitar" id="btn-solicitar-14" disabled>Solicitar</button></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="titulo-libro" data-resumen="1984 es una novela distópica que retrata un futuro en el que el estado controla todos los aspectos de la vida. Winston Smith, el protagonista, trabaja para el Partido, manipulando la historia a través del Ministerio de la Verdad. Sin embargo, comienza a cuestionar el control del Partido y su líder, el Gran Hermano. La obra de George Orwell es una crítica feroz a la dictadura, la vigilancia totalitaria y la manipulación de la verdad." data-autor="George Orwell" data-año="1949">1984</td>
+                                                <td>George Orwell</td>
+                                                <td>1949</td>
+                                                <td>Disponible</td>
+                                                <td><button class="btn btn-primary solicitar" id="btn-solicitar-15">Solicitar</button></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="titulo-libro" data-resumen="La Odisea es una de las grandes epopeyas de la literatura clásica. Escrita por Homero, narra las aventuras del héroe griego Odiseo (Ulises en la mitología romana) en su viaje de regreso a casa después de la Guerra de Troya. A lo largo de su travesía, Odiseo enfrenta una serie de obstáculos, incluidos cíclopes, sirenas y dioses vengativos, mientras su esposa, Penélope, y su hijo, Telémaco, luchan por mantener su reino." data-autor="Homero" data-año="-800">La Odisea</td>
+                                                <td>Homero</td>
+                                                <td>-800</td>
+                                                <td>No disponible</td>
+                                                <td><button class="btn btn-primary solicitar" id="btn-solicitar-16" disabled>Solicitar</button></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="titulo-libro" data-resumen="En Guerra y paz, León Tolstói retrata las vidas de varias familias aristocráticas rusas durante las guerras napoleónicas, centrándose especialmente en Pierre Bezújov, Andréi Bolkonski y Natasha Rostova. A través de las vidas de estos personajes, la novela ofrece una profunda reflexión sobre la historia, la filosofía, el amor y la moral. Es una obra monumental que mezcla narrativa, historia y filosofía." data-autor="León Tolstói" data-año="1869">Guerra y paz</td>
+                                                <td>León Tolstói</td>
+                                                <td>1869</td>
+                                                <td>Disponible</td>
+                                                <td><button class="btn btn-primary solicitar" id="btn-solicitar-17">Solicitar</button></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="titulo-libro" data-resumen="El Señor de los Anillos es una trilogía de fantasía épica que sigue el viaje de Frodo Bolsón, un hobbit que debe destruir un anillo mágico antes de que caiga en las manos del malvado Sauron. A lo largo de su viaje, Frodo es ayudado por sus amigos y compañeros, incluidos Aragorn, Legolas y Gandalf. La obra de J.R.R. Tolkien es considerada uno de los pilares de la literatura de fantasía moderna." data-autor="J.R.R. Tolkien" data-año="1954">El Señor de los Anillos</td>
+                                                <td>J.R.R. Tolkien</td>
+                                                <td>1954</td>
+                                                <td>No disponible</td>
+                                                <td><button class="btn btn-primary solicitar" id="btn-solicitar-18" disabled>Solicitar</button></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="titulo-libro" data-resumen="El retrato de Dorian Gray narra la vida de un joven aristócrata que, gracias a un pacto sobrenatural, conserva su juventud mientras su retrato envejece y se corrompe. Dorian se sumerge en una vida de excesos y depravación, sin sufrir las consecuencias visibles de sus acciones. La novela de Oscar Wilde es una reflexión sobre la moral, la belleza y las consecuencias del hedonismo." data-autor="Oscar Wilde" data-año="1890">El retrato de Dorian Gray</td>
+                                                <td>Oscar Wilde</td>
+                                                <td>1890</td>
+                                                <td>Disponible</td>
+                                                <td><button class="btn btn-primary solicitar" id="btn-solicitar-19">Solicitar</button></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="titulo-libro" data-resumen="Drácula es la novela clásica de terror de Bram Stoker que cuenta la historia del conde Drácula, un vampiro que se traslada de Transilvania a Inglaterra para expandir su reino de no-muertos. A través de diarios y cartas de los personajes, el lector sigue los intentos del abogado Jonathan Harker y sus amigos por detener a Drácula antes de que convierta a más víctimas en vampiros. Es una obra fundamental del género gótico." data-autor="Bram Stoker" data-año="1897">Drácula</td>
+                                                <td>Bram Stoker</td>
+                                                <td>1897</td>
+                                                <td>No disponible</td>
+                                                <td><button class="btn btn-primary solicitar" id="btn-solicitar-20" disabled>Solicitar</button></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="titulo-libro" data-resumen="La lucha de un granjero por salvar a su familia de la ruina económica." data-autor="John Steinbeck" data-año="1939">Las uvas de la ira</td>
+                                                <td>John Steinbeck</td>
+                                                <td>1939</td>
+                                                <td>No disponible</td>
+                                                <td><button class="btn btn-primary solicitar" id="btn-solicitar-21" disabled>Solicitar</button></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="titulo-libro" data-resumen="La trágica historia de amor y odio entre Heathcliff y Catherine." data-autor="Emily Brontë" data-año="1847">Cumbres Borrascosas</td>
+                                                <td>Emily Brontë</td>
+                                                <td>1847</td>
+                                                <td>Disponible</td>
+                                                <td><button class="btn btn-primary solicitar" id="btn-solicitar22">Solicitar</button></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="titulo-libro" data-resumen="La búsqueda del asesino del padre de Hamlet en una obra maestra del teatro." data-autor="William Shakespeare" data-año="1603">Hamlet</td>
+                                                <td>William Shakespeare</td>
+                                                <td>1603</td>
+                                                <td>No disponible</td>
+                                                <td><button class="btn btn-primary solicitar" id="btn-solicitar-23" disabled>Solicitar</button></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="titulo-libro" data-resumen="Una obra clave del existencialismo que explora la libertad y la angustia." data-autor="Jean-Paul Sartre" data-año="1944">El ser y la nada</td>
+                                                <td>Jean-Paul Sartre</td>
+                                                <td>1944</td>
+                                                <td>Disponible</td>
+                                                <td><button class="btn btn-primary solicitar" id="btn-solicitar-24">Solicitar</button></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="titulo-libro" data-resumen="Una visión distópica de un mundo donde las emociones humanas están controladas." data-autor="Aldous Huxley" data-año="1932">Un mundo feliz</td>
+                                                <td>Aldous Huxley</td>
+                                                <td>1932</td>
+                                                <td>No disponible</td>
+                                                <td><button class="btn btn-primary solicitar" id="btn-solicitar-25" disabled>Solicitar</button></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="titulo-libro" data-resumen="Una fábula sobre la vida y las decisiones que hacemos a lo largo de nuestro viaje." data-autor="Antoine de Saint-Exupéry" data-año="1943">El principito</td>
+                                                <td>Antoine de Saint-Exupéry</td>
+                                                <td>1943</td>
+                                                <td>Disponible</td>
+                                                <td><button class="btn btn-primary solicitar" id="btn-solicitar-26">Solicitar</button></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="titulo-libro" data-resumen="Un thriller psicológico sobre los límites del amor y la locura." data-autor="Gillian Flynn" data-año="2012">Perdida</td>
+                                                <td>Gillian Flynn</td>
+                                                <td>2012</td>
+                                                <td>No disponible</td>
+                                                <td><button class="btn btn-primary solicitar" id="btn-solicitar-27" disabled>Solicitar</button></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="titulo-libro" data-resumen="Un joven noble inglés vende su alma a cambio de la eterna juventud." data-autor="Oscar Wilde" data-año="1890">El retrato de Dorian Gray</td>
+                                                <td>Oscar Wilde</td>
+                                                <td>1890</td>
+                                                <td>Disponible</td>
+                                                <td><button class="btn btn-primary solicitar" id="btn-solicitar-28">Solicitar</button></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="titulo-libro" data-resumen="Una novela negra sobre el asesinato de una niña en un pueblo de Alaska." data-autor="Stieg Larsson" data-año="2005">Los hombres que no amaban a las mujeres</td>
+                                                <td>Stieg Larsson</td>
+                                                <td>2005</td>
+                                                <td>Disponible</td>
+                                                <td><button class="btn btn-primary solicitar" id="btn-solicitar-29">Solicitar</button></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="titulo-libro" data-resumen="La investigación de Sherlock Holmes sobre el caso de un misterioso perro." data-autor="Arthur Conan Doyle" data-año="1902">El perro de los Baskerville</td>
+                                                <td>Arthur Conan Doyle</td>
+                                                <td>1902</td>
+                                                <td>No disponible</td>
+                                                <td><button class="btn btn-primary solicitar" id="btn-solicitar-30" disabled>Solicitar</button></td>
+                                            </tr>
+
+                                            <script src="js/tables.js"></script> 
+
+                                        </tbody>
+                                    </table>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- /.container-fluid -->
+
+                </div>
+                <!-- End of Main Content -->
+
+                <!-- Footer -->
+                <footer class="sticky-footer bg-white">
+                    <div class="container my-auto">
+                        <div class="copyright text-center my-auto">
+                            <span>Copyright &copy; Your Website 2020</span>
+                        </div>
+                    </div>
+                </footer>
+                <!-- End of Footer -->
+
+            </div>
+            <!-- End of Content Wrapper -->
+
+        </div>
+        <!-- End of Page Wrapper -->
+
+        <!-- Scroll to Top Button-->
+        <a class="scroll-to-top rounded" href="#page-top">
+            <i class="fas fa-angle-up"></i>
+        </a>
+
+        <!-- Logout Modal-->
+        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                        <a class="btn btn-primary" href="login.html">Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bootstrap core JavaScript-->
+        <script src="vendor/jquery/jquery.min.js"></script>
+        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+        <!-- Core plugin JavaScript-->
+        <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+        <!-- Custom scripts for all pages-->
+        <script src="js/sb-admin-2.min.js"></script>
+
+        <!-- Page level plugins -->
+        <script src="vendor/datatables/jquery.dataTables.min.js"></script>
+        <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+        <!-- Page level custom scripts -->
+        <script src="js/demo/datatables-demo.js"></script>
+
+    </body>
+
+</html>
